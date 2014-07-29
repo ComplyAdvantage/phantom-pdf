@@ -7,6 +7,8 @@ use Symfony\Component\Process\Process;
 
 class PdfGenerator {
 
+    protected $filename;
+
     /**
      * @var string
      */
@@ -45,6 +47,8 @@ class PdfGenerator {
      */
     public function createFromView($view, $filename)
     {
+        $this->filename = $filename;
+
         $this->generateFilePaths();
 
         $this->generatePdf($view);
@@ -58,13 +62,15 @@ class PdfGenerator {
      */
     protected function generateFilePaths()
     {
+        $filename = $this->filename;
+
         $this->validateStoragePath();
 
         $path = $this->storagePath . DIRECTORY_SEPARATOR;
 
         $this->htmlPath = $path . uniqid('pdf-', true).'.html';
 
-        $this->pdfPath = $path . uniqid('html-', true) . '.pdf';
+        $this->pdfPath = $path . $this->filename . '.pdf';
     }
 
     /**
