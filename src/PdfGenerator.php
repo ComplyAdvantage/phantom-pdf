@@ -139,7 +139,7 @@ class PdfGenerator {
     {
         @unlink($this->htmlPath);
 
-        @unlink($this->pdfPath);
+        //@unlink($this->pdfPath);
     }
 
     /**
