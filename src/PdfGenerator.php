@@ -174,5 +174,6 @@ class PdfGenerator {
     public function ignoreSSLErrors()
     {
         $this->commandLineOptions[] = '--ignore-ssl-errors=true';
+        $this->commandLineOptions[] = '--ssl-protocol=tlsv1';
     }
 }
